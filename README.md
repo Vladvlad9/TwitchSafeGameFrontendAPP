@@ -1,5 +1,21 @@
-# Vue 3 + TypeScript + Vite
+# Twitch Safe Game — открытие сундука
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Интерактивный Vue-интерфейс для `TwitchSafeGameAPI`. Ведущий задаёт секретный код, зрители отправляют ответы командой `!code`, а событие победы открывает сундук в реальном времени через SSE.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+```sh
+cp .env.example .env
+npm install
+npm run dev
+```
+
+По умолчанию приложение подключается к `http://localhost:9881/api/v1/game`. Адрес можно изменить через `VITE_API_URL`.
+
+## OBS overlay
+
+Добавьте в OBS источник «Браузер» с адресом:
+
+```text
+http://localhost:5173/overlay
+```
+
+Рекомендуемый размер источника — `1920×1080`. Фон overlay полностью прозрачный. Когда игра не запущена, источник ничего не показывает; во время игры отображаются кейс и команда для чата, а после победы — открытый кейс и ник победителя.
